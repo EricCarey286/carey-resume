@@ -14,9 +14,9 @@ interface CoreConcept {
 export const CORE_CONCEPTS: CoreConcept[] = [
   {
     image: jsImg,
-    title: "JavaScript",
+    title: "JavaScript / TypeScript",
     description:
-      "4+ years of professional JavaScript programming building cloud based SaaS and PaaS systems as well as RESTful APIs and responsive websites",
+      "4+ years of professional JavaScript programming building cloud based SaaS, RESTful APIs and responsive websites. I also have transitioned to a TypeScript focus over the last year",
   },
   {
     image: reactImg,
@@ -24,13 +24,13 @@ export const CORE_CONCEPTS: CoreConcept[] = [
     description:
       "This website is built with React. The project aims to highlight my skills and understanding of the React framework. For more information please explore the repo here: ",
     link: "https://github.com/ericcarey286/carey-resume", 
-    linkText: "EC Online Resume",
+    linkText: "EWC Online Resume",
   },
   {
     image: leaderImg,
     title: "Leadership",
     description:
-      "My strong organizational abilities and effective communication show through my project lead experience as well as my time as president of a collegiate fraternity",
+      "My strong organizational abilities and effective communication show through my project lead experience with Dell as well as my time as director of the STG Eternals Scholarship Golf Tournamnet",
   },
   {
     image: volunteerImg,
@@ -56,15 +56,15 @@ export const EXAMPLES: Example[] = [
     company: "Dell Technologies - DevSecOps",
     date: "Apr. 2024 - Present",
     description:
-      "As a member of the DevSecOps team at Dell, I work on a vulnerability dashboard utitilized by internal application owners. I specifically monitor our data loads using MS SQL and SSIS. My role also includes assisting in the design of our dashboard using Figma and eventually developing the interface with a React/NodeJS stack. ",
+      "As a member of the DevSecOps team at Dell, I work on a vulnerability dashboard utitilized by internal application owners. I currently oversee development of 3rd party API integration with our MS SQL database loads. I also develop the interface with a React/NodeJS stack. I originally had a role assisting in the design of our dashboard using Figma. ",
     code: `
+JavaScript / TypeScript
 MS SQL
-Figma
 React
 Node.JS
+Python
+Figma
 Swagger
-JavaScript / TypeScript
-Architecture
 Documentation`,
   },
   {
