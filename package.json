@@ -1,6 +1,11 @@
 {
   "name": "carey-resume",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": "Eric W. Carey",
+  "license": "MIT",
+  "homepage": "https://www.ericwcarey.com",
+  "repository": "https://github.com/ericcarey286/carey-resume",
+  "description": "Personal portfolio and resume",
   "private": true,
   "scripts": {
     "dev": "next dev",
