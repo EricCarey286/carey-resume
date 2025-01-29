@@ -6,7 +6,6 @@
 
 - [Project Overview](#project-overview)
 - [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
 - [Contact Me](#contact-me)
 
 ## Project Overview
