@@ -20,4 +20,4 @@ This website showcases my professional experience, skills, and projects. The sit
 
 ## Contact Me
 
-If you have any questions or would like to discuss a potential project, please don't hesitate to [contact me](https://ericwcarey.com/contact). I look forward to hearing from you!
+If you have any questions or would like to discuss a potential project, please don't hesitate to [contact me](https://ericwcarey.com). I look forward to hearing from you!
