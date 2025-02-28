@@ -11,15 +11,25 @@ export const config = {
 
 async function getData(): Promise<YouTubeApiResponse> {
   //fetch playlist snippet from YT api
-  const res = await fetch(
-    `${YOUTUBE_PLAYLIST_API}?part=snippet&maxResults=10&playlistId=PLMvVU3l5gyKWcAGstohdAaMC6dPUttMIb&key=${
-      process.env.YOUTUBE_API_KEY
-    }&timestamp=${new Date().getTime()}`,
-    {
-      cache: "no-cache", //no chache to keep playlist real time
+  try {
+    const res = await fetch(
+      `${YOUTUBE_PLAYLIST_API}?part=snippet&maxResults=10&playlistId=PLMvVU3l5gyKWcAGstohdAaMC6dPUttMIb&key=${
+        process.env.NEXT_PUBLIC_YOUTUBE_API_KEY // Ensure using a NEXT_PUBLIC variable
+      }&timestamp=${new Date().getTime()}`,
+      {
+        cache: "no-cache", // Avoid caching for real-time updates
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
     }
-  );
-  return res.json();
+
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return { error: false } as YouTubeApiResponse;
+  }
 }
 
 export default async function YoutubeList() {
@@ -37,7 +47,8 @@ export default async function YoutubeList() {
         the YouTube API v3
       </p>
       <Slider>
-        {data.items.map((item: any, index) => {
+        {!data.error ? <p>There was an error fetching the videos</p> 
+        : data.items.map((item: any, index) => {
           const { id, snippet = {} } = item;
           const { title, thumbnails = {}, resourceId } = snippet;
           const { medium = {} } = thumbnails;

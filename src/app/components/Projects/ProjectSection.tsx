@@ -3,7 +3,7 @@ import Section from '../Section/Section';
 
 export default function ProjectSection() {
   return (
-    <Section title='Projects' id='projects'>
+    <Section title='Projects' heading='Projects' id='projects'>
       <Project />
     </Section>
   );

@@ -28,5 +28,6 @@ export interface Thumbnail {
   
   // Define the structure for the API response
   export interface YouTubeApiResponse {
+    error: boolean;
     items: PlaylistItem[];
   }
