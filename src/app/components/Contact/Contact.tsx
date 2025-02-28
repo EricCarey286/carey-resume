@@ -1,25 +1,36 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
-
 import "./Contact.css";
 import Section from "../Section/Section";
 
 export default function Contact() {
-  const [isSuccessful, setIsSuccessful] = useState("null");
-
-  const serviceKey = "service_8e72fb5";
-  const templateKey = "template_e8oqcb9";
-  const publicKey = "V_TYKAT8dkSssHTNv";
+  const [isSuccessful, setIsSuccessful] = useState<string | null>(null);
+  const [serviceKey, setServiceKey] = useState<string | null>(null);
+  const [templateKey, setTemplateKey] = useState<string | null>(null);
+  const [publicKey, setPublicKey] = useState<string | null>(null);
 
   const form = useRef<HTMLFormElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
+  // Set environment variables inside useEffect to ensure they load only on the client
+  useEffect(() => {
+    setServiceKey(process.env.NEXT_PUBLIC_SERVICE_KEY || null);
+    setTemplateKey(process.env.NEXT_PUBLIC_TEMPLATE_KEY || null);
+    setPublicKey(process.env.NEXT_PUBLIC_PUBLIC_KEY || null);
+  }, []);
+
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!serviceKey || !templateKey || !publicKey) {
+      console.error("Error: Missing EmailJS keys");
+      setIsSuccessful("error");
+      return;
+    }
 
     emailjs.sendForm(serviceKey, templateKey, form.current!, publicKey).then(
       (result) => {
@@ -31,17 +42,18 @@ export default function Contact() {
         console.log(error.text);
       }
     );
+
     if (nameRef.current) nameRef.current.value = "";
     if (emailRef.current) emailRef.current.value = "";
     if (messageRef.current) messageRef.current.value = "";
   };
 
   function validateSuccess(result: boolean) {
-    if (result) {
-      setIsSuccessful("success");
-    } else {
-      setIsSuccessful("error");
-    }
+    setIsSuccessful(result ? "success" : "error");
+  }
+
+  if (serviceKey === null || templateKey === null || publicKey === null) {
+    return <p>Contact me at ericwcarey@gmail.com</p>; // Avoid hydration mismatch
   }
 
   return (
@@ -62,7 +74,6 @@ export default function Contact() {
                 id="user_name"
                 className="contact-input"
                 required
-                title="Your full name"
                 placeholder="Enter your name"
               />
             </div>
@@ -75,32 +86,23 @@ export default function Contact() {
                 id="user_email"
                 className="contact-input"
                 required
-                title="Your email address"
                 placeholder="Enter your email"
               />
             </div>
           </div>
-          <label htmlFor="message">Message</label>
+          <label htmlFor="contact-message">Message</label>
           <textarea
             id="contact-message"
             ref={messageRef}
-            name="message"
-            title="Your message"
+            name="contact-message"
             placeholder="Enter your message"
           />
-          <input
-            type="submit"
-            value="Send"
-            className="submit"
-            required
-            title="Send your message"
-          />
+          <input type="submit" value="Send" className="submit" />
+
           {isSuccessful === "success" ? (
-            <p className="contact-success "> Your message has been sent</p>
+            <p className="contact-success">Your message has been sent</p>
           ) : isSuccessful === "error" ? (
-            <p className="contact-error">
-              There was an error sending your message.
-            </p>
+            <p className="contact-error">There was an error sending your message.</p>
           ) : null}
         </form>
       </div>
