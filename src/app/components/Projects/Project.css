@@ -1,0 +1,28 @@
+.project-container {
+    display: grid;
+    align-items: center;
+    background: #467750;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba (240, 205, 110, 0.2);
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.project-container a {
+    color: #ebe7ef;
+    font-weight: bold;
+  }
+
+.project-header {
+    margin-top: 0;
+}
+
+.project-preview {
+    justify-self: center; /* Centers the image horizontally */
+    align-self: center;
+}
+
+.preview-img  {
+    border-radius: 5px;
+}
