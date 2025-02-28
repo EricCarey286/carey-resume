@@ -6,6 +6,10 @@ import "./Contact.css";
 import Section from "../Section/Section";
 
 export default function Contact() {
+  console.log('service: ' + process.env.NEXT_PUBLIC_SERVICE_KEY)
+  console.log('temp: ' + process.env.NEXT_PUBLIC_TEMPLATE_KEY)
+  console.log('service: ' + process.env.NEXT_PUBLIC_PUBLIC_KEY)
+
   const [isSuccessful, setIsSuccessful] = useState<string | null>(null);
   const [serviceKey, setServiceKey] = useState<string | null>(null);
   const [templateKey, setTemplateKey] = useState<string | null>(null);
