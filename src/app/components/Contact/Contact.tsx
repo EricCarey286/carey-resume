@@ -20,7 +20,7 @@ export default function Contact() {
   useEffect(() => {
     setServiceKey(process.env.SERVICE_KEY || null);
     setTemplateKey(process.env.TEMPLATE_KEY || null);
-    setPublicKey(process.env.UBLIC_KEY || null);
+    setPublicKey(process.env.PUBLIC_KEY || null);
   }, []);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
