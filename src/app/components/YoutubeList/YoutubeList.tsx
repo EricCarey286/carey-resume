@@ -10,7 +10,7 @@ const YoutubeList = () => {
 
   useEffect(() => {
     // Directly assign the environment variable
-    const key = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+    const key = process.env.YOUTUBE_API_KEY;
     if (key) {
       setApiKey(key);
     } else {

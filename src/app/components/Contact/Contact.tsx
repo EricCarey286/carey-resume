@@ -18,9 +18,9 @@ export default function Contact() {
 
   // Set environment variables inside useEffect to ensure they load only on the client
   useEffect(() => {
-    setServiceKey(process.env.NEXT_PUBLIC_SERVICE_KEY || null);
-    setTemplateKey(process.env.NEXT_PUBLIC_TEMPLATE_KEY || null);
-    setPublicKey(process.env.NEXT_PUBLIC_PUBLIC_KEY || null);
+    setServiceKey(process.env.SERVICE_KEY || null);
+    setTemplateKey(process.env.TEMPLATE_KEY || null);
+    setPublicKey(process.env.UBLIC_KEY || null);
   }, []);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
