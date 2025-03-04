@@ -4,24 +4,17 @@ import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import Section from "../Section/Section";
+import { ContactProps } from "../../types";
 
-export default function Contact() {
+const Contact: React.FC<ContactProps> = ({serviceKey, templateKey, publicKey}) => {
   const [isSuccessful, setIsSuccessful] = useState<string | null>(null);
-  const [serviceKey, setServiceKey] = useState<string | null>(null);
-  const [templateKey, setTemplateKey] = useState<string | null>(null);
-  const [publicKey, setPublicKey] = useState<string | null>(null);
+
+  console.log('Keys = ' + serviceKey + ' ' + templateKey + ' ' + publicKey);
 
   const form = useRef<HTMLFormElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
-
-  // Set environment variables inside useEffect to ensure they load only on the client
-  useEffect(() => {
-    setServiceKey(process.env.SERVICE_KEY || null);
-    setTemplateKey(process.env.TEMPLATE_KEY || null);
-    setPublicKey(process.env.UBLIC_KEY || null);
-  }, []);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,10 +43,6 @@ export default function Contact() {
 
   function validateSuccess(result: boolean) {
     setIsSuccessful(result ? "success" : "error");
-  }
-
-  if (serviceKey === null || templateKey === null || publicKey === null) {
-    return <p>Contact me at ericwcarey@gmail.com</p>; // Avoid hydration mismatch
   }
 
   return (
@@ -109,3 +98,5 @@ export default function Contact() {
     </Section>
   );
 }
+
+export default Contact;
