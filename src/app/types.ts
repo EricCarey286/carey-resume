@@ -31,3 +31,13 @@ export interface Thumbnail {
     error: boolean;
     items: PlaylistItem[];
   }
+
+  export interface YoutubeListProps {
+    apiKey: string;
+  }
+
+  export interface ContactProps {
+    serviceKey: string;
+    templateKey: string;
+    publicKey: string;
+  }
