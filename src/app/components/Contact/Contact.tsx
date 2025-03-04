@@ -6,7 +6,7 @@ import "./Contact.css";
 import Section from "../Section/Section";
 import { ContactProps } from "../../types";
 
-const Contact: React.FC<ContactProps> = ({serviceKey, templateKey, publicKey}) => {
+const Contact: React.FC<ContactProps> = ({ serviceKey, templateKey, publicKey }) => {
   const [isSuccessful, setIsSuccessful] = useState<string | null>(null);
   const [loadSuccessful, setLoadSuccessful] = useState<string | null>(null);
 
@@ -47,58 +47,60 @@ const Contact: React.FC<ContactProps> = ({serviceKey, templateKey, publicKey}) =
   return (
     <Section title="Contact">
       <div id="contact-div">
-        {!loadSuccessful && 
+        {!loadSuccessful &&
           <>
             <p className="contact-error">Whoopps! Looks like there is an error with our contact form!</p>
             <p className="contact-error">Please check back later or contact me @ ericwcarey@gmail.com</p>
           </>
         }
-        <form ref={form} onSubmit={sendEmail} className="contact-form">
-          <div className="contact-heading">
-            <h3>Contact Me</h3>
-            <h5>For more information</h5>
-          </div>
-          <div className="input-group">
-            <div className="input-item">
-              <label htmlFor="user_name">Name</label>
-              <input
-                ref={nameRef}
-                type="text"
-                name="user_name"
-                id="user_name"
-                className="contact-input"
-                required
-                placeholder="Enter your name"
-              />
+        {loadSuccessful &&
+          <form ref={form} onSubmit={sendEmail} className="contact-form">
+            <div className="contact-heading">
+              <h3>Contact Me</h3>
+              <h5>For more information</h5>
             </div>
-            <div className="input-item">
-              <label htmlFor="user_email">Email</label>
-              <input
-                ref={emailRef}
-                type="email"
-                name="user_email"
-                id="user_email"
-                className="contact-input"
-                required
-                placeholder="Enter your email"
-              />
+            <div className="input-group">
+              <div className="input-item">
+                <label htmlFor="user_name">Name</label>
+                <input
+                  ref={nameRef}
+                  type="text"
+                  name="user_name"
+                  id="user_name"
+                  className="contact-input"
+                  required
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div className="input-item">
+                <label htmlFor="user_email">Email</label>
+                <input
+                  ref={emailRef}
+                  type="email"
+                  name="user_email"
+                  id="user_email"
+                  className="contact-input"
+                  required
+                  placeholder="Enter your email"
+                />
+              </div>
             </div>
-          </div>
-          <label htmlFor="contact-message">Message</label>
-          <textarea
-            id="contact-message"
-            ref={messageRef}
-            name="contact-message"
-            placeholder="Enter your message"
-          />
-          <input type="submit" value="Send" className="submit" />
+            <label htmlFor="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              ref={messageRef}
+              name="contact-message"
+              placeholder="Enter your message"
+            />
+            <input type="submit" value="Send" className="submit" />
 
-          {isSuccessful === "success" ? (
-            <p className="contact-success">Your message has been sent</p>
-          ) : isSuccessful === "error" ? (
-            <p className="contact-error">There was an error sending your message.</p>
-          ) : null}
-        </form>
+            {isSuccessful === "success" ? (
+              <p className="contact-success">Your message has been sent</p>
+            ) : isSuccessful === "error" ? (
+              <p className="contact-error">There was an error sending your message.</p>
+            ) : null}
+          </form>
+        }
       </div>
     </Section>
   );
