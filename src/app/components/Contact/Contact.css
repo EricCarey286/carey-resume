@@ -61,6 +61,15 @@ textarea {
   border-color: #467750;
 }
 
+.contact-err-div {
+  width: 100%;
+  justify-content: center;;
+  background-color: #ebe7ef;
+  margin: 5rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
 .contact-success {
   color: #ebe7ef;
 }
