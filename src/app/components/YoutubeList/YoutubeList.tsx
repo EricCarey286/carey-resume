@@ -12,7 +12,6 @@ export const config = {
 };
 
 const YoutubeList: React.FC<YoutubeListProps> = ({ apiKey }) => {
-  console.log('apiKey = ' + apiKey);
   const [data, setData] = useState({
     items: [],
   });

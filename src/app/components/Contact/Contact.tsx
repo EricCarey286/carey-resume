@@ -8,8 +8,7 @@ import { ContactProps } from "../../types";
 
 const Contact: React.FC<ContactProps> = ({serviceKey, templateKey, publicKey}) => {
   const [isSuccessful, setIsSuccessful] = useState<string | null>(null);
-
-  console.log('Keys = ' + serviceKey + ' ' + templateKey + ' ' + publicKey);
+  const [loadSuccessful, setLoadSuccessful] = useState<string | null>(null);
 
   const form = useRef<HTMLFormElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
@@ -21,7 +20,7 @@ const Contact: React.FC<ContactProps> = ({serviceKey, templateKey, publicKey}) =
 
     if (!serviceKey || !templateKey || !publicKey) {
       console.error("Error: Missing EmailJS keys");
-      setIsSuccessful("error");
+      setLoadSuccessful("error");
       return;
     }
 
@@ -48,6 +47,12 @@ const Contact: React.FC<ContactProps> = ({serviceKey, templateKey, publicKey}) =
   return (
     <Section title="Contact">
       <div id="contact-div">
+        {!loadSuccessful && 
+          <>
+            <p className="contact-error">Whoopps! Looks like there is an error with our contact form!</p>
+            <p className="contact-error">Please check back later or contact me @ ericwcarey@gmail.com</p>
+          </>
+        }
         <form ref={form} onSubmit={sendEmail} className="contact-form">
           <div className="contact-heading">
             <h3>Contact Me</h3>
