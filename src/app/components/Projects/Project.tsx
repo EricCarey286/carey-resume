@@ -1,6 +1,6 @@
 import Image from "next/image";
 import './Project.css';
-const bbhPreview = '/images/bbh-preview.png';
+const bbhPreview = '/images/bbh-preview-update.png';
 
 export default function Project(){
   return (
